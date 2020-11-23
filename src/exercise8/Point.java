@@ -1,40 +1,49 @@
 package exercise8;
 
+import java.util.Scanner;
+
 public class Point {
-    // Define attributes
+    public double xDim;
+    public double yDim;
 
     public Point() {
-        // Initialize attributes to 0
+        this.xDim = 0;
+        this.yDim = 0;
     }
 
     public Point(double x, double y) {
-        // Initialize attributes by coping x and y parameters
+        this.xDim = x;
+        this.yDim = y;
     }
 
     public Point(Point otherPoint) {
-        // Initialize attributes by coping attributes of otherPoint
+        this.xDim = otherPoint.xDim;
+        this.yDim = otherPoint.yDim;
     }
 
     public void initialize() {
-        // Change attributes through console
+        this.xDim = Utils.INPUT.nextDouble();
+        this.yDim = Utils.INPUT.nextDouble();
     }
 
     public void translate(double xDelta, double yDelta) {
-        // Change attributes by adding xDelta and yDelta
+        this.xDim += xDelta;
+        this.yDim += yDelta;
     }
 
     public Point createNewTranslatedPoint(double xDelta, double yDelta) {
-        // Create new point which is translated relative to this point
-        return null;
+        return new Point(xDim + xDelta,yDim + yDelta);
     }
 
     public boolean equals(Point otherPoint) {
-        // Compare attributes of this point to attributes of otherPoint for equality
+        if (Utils.equals(this.xDim, otherPoint.xDim) &&
+            Utils.equals(this.yDim, otherPoint.yDim))   {
+            return true;
+        }
         return false;
     }
 
     public String toString() {
-        // Represent attributes as string
-        return null;
+        return String.format("(%.1f, %.1f)", this.xDim, this.yDim);
     }
 }
